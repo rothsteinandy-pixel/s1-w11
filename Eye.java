@@ -8,6 +8,9 @@ public class Eye {
     private int eyeballBorder = 3;
     private int pupilRadius = 10;
     private double horDist, vertDist;
+    private int mouseX ;
+    private int mouseY;
+    private int mod;
 
 
     public Eye(int x, int y, int width, int height) {
@@ -47,9 +50,26 @@ public class Eye {
         g.setColor(Color.white);
         g.fillOval (eyeX + eyeballBorder, eyeY + eyeballBorder, 
                     eyeWidth - (2 * eyeballBorder), eyeHeight - (2 * eyeballBorder));
-                    
-        g.setColor(Color.black);
-        g.fillOval(pupilX - pupilRadius, pupilY - pupilRadius, 2 * pupilRadius, 2 * pupilRadius);
+        if (inEye(mouseX, mouseY)) {
+            g.fillOval
+        } else{
+            g.setColor(Color.black);
+            g.fillOval(pupilX - pupilRadius, pupilY - pupilRadius, 2 * pupilRadius, 2 * pupilRadius);
+                if(mod >0){
+                    g.setColor(Color.red);
+                    Graphics2D g2d = (Graphics2D) g;
+                    g2d.setStroke(new BasicStroke(8.0f));
+                    g.drawLine(pupilX, pupilY, mouseX, mouseY);}}
+        
+    }
+    public void Lasers(int mouseX, int mouseY){
+        this.mouseX =mouseX;
+        this.mouseY = mouseY;
+        mod ++;
+    }
+
+    public boolean inEye(double mouseX, double mouseY){
+        return(Math.sqrt(Math.pow(mouseX- eyeCenterX,2)+Math.pow(mouseY-eyeCenterY,2))<10.0);
     }
 
 
