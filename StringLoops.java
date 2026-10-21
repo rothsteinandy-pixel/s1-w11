@@ -1,5 +1,5 @@
-public class StringsLoops{
-    public StringsLoops(){
+public class StringLoops{
+    public StringLoops(){
   
     }
   

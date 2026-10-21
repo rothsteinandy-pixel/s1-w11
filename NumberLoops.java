@@ -1,5 +1,5 @@
-public class NumbersLoops{
-    public NumbersLoops(){
+public class NumberLoops{
+    public NumberLoops(){
   
     }
   
