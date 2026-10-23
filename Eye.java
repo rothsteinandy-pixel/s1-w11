@@ -5,8 +5,8 @@ public class Eye {
     // if you have a lot of instance variables of the same type, you can declare them all at
     //  once by using commas.  You can't set default values, though!
     private int eyeX, eyeY, eyeWidth, eyeHeight, eyeCenterX, eyeCenterY, pupilX, pupilY;
-    private int eyeballBorder = 3;
-    private int pupilRadius = 10;
+    private int eyeballBorder = 1;
+    private int pupilRadius = 2;
     private double horDist, vertDist;
     private int mouseX ;
     private int mouseY;
@@ -51,15 +51,17 @@ public class Eye {
         g.fillOval (eyeX + eyeballBorder, eyeY + eyeballBorder, 
                     eyeWidth - (2 * eyeballBorder), eyeHeight - (2 * eyeballBorder));
         if (inEye(mouseX, mouseY)) {
-            g.fillOval
+            g.setColor(Color.black);
+            g.fillOval(eyeCenterX-pupilRadius, eyeCenterY-pupilRadius,2 * pupilRadius, 2 * pupilRadius);
         } else{
             g.setColor(Color.black);
             g.fillOval(pupilX - pupilRadius, pupilY - pupilRadius, 2 * pupilRadius, 2 * pupilRadius);
-                if(mod >0){
-                    g.setColor(Color.red);
-                    Graphics2D g2d = (Graphics2D) g;
-                    g2d.setStroke(new BasicStroke(8.0f));
-                    g.drawLine(pupilX, pupilY, mouseX, mouseY);}}
+                // if(mod >0){
+                //     g.setColor(Color.red);
+                //     Graphics2D g2d = (Graphics2D) g;
+                //     g2d.setStroke(new BasicStroke(8.0f));
+                //     g.drawLine(pupilX, pupilY, mouseX, mouseY);}
+                }
         
     }
     public void Lasers(int mouseX, int mouseY){
@@ -69,7 +71,7 @@ public class Eye {
     }
 
     public boolean inEye(double mouseX, double mouseY){
-        return(Math.sqrt(Math.pow(mouseX- eyeCenterX,2)+Math.pow(mouseY-eyeCenterY,2))<10.0);
+        return(Math.sqrt(Math.pow(mouseX- eyeCenterX,2)+Math.pow(mouseY-eyeCenterY,2))<Math.min(eyeWidth/2, eyeHeight/2));
     }
 
 
